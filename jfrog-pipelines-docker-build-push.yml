@@ -89,9 +89,6 @@ pipelines:
             - name: build_info_1_docker_build_push
           outputResources:
             - name: promoted_build_info
-          execution:
-            - send_notification notifySlack --text "Docker build completed for $res_app_gitRepo_path at $res_app_gitRepo_gitProvider_url"
-    
   # - name: demo_release
   #   steps:
   #     - name: bundle
