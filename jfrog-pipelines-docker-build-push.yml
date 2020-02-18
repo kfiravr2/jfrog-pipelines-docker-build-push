@@ -83,7 +83,7 @@ pipelines:
         configuration:
           targetRepository: promoted-pipelines
           integrations:
-            - name: demoArt
+            - name: Artifactory_GCP
           inputResources:
             - name: build_info_1_docker_build_push
           outputResources:
