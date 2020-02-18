@@ -2,22 +2,22 @@ resources:
   - name: repo_1_docker_build_push
     type: GitRepo
     configuration:
-      gitProvider: github   # replace with your integration
-      path: BatelT/jfrog-pipelines-docker-build-push    # replace with your repository name
+      gitProvider: github_admin   # replace with your integration
+      path: kfiravr2/jfrog-pipelines-docker-build-push    # replace with your repository name
       branches:
         include: master
 
   - name: build_info_1_docker_build_push
     type: BuildInfo
     configuration:
-      sourceArtifactory: demoArt
+      sourceArtifactory: Artifactory_GCP
       buildName: svc_build
       buildNumber: 1
 
   - name: promoted_build_info
     type: BuildInfo
     configuration:
-      sourceArtifactory: demoArt
+      sourceArtifactory: Artifactory_GCP
       buildName: svc_build
       buildNumber: 1
 
@@ -54,19 +54,19 @@ pipelines:
         configuration:
           dockerFileLocation: .
           dockerFileName: Dockerfile
-          dockerImageName: batelt-docker-local.jfrog.io/docker-local/alpine37
+          dockerImageName: kfira1.jfrog.io/docker-local/alpine37
           dockerImageTag: ${run_number}
           inputResources:
             - name: repo_1_docker_build_push
           integrations:
-            - name: demoArt
+            - name: Artifactory_GCP
 
       - name: docker_push
         type: DockerPush
         configuration:
           targetRepository: docker-local
           integrations:
-            - name: demoArt
+            - name: Artifactory_GCP
           inputSteps:
             - name: docker_build
 
